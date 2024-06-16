@@ -1,15 +1,14 @@
 pkgname=eza
-pkgver=0.18.14
+pkgver=0.18.18
 pkgrel=1
-pkgdesc="A modern replacement for ls"
-url="https://github.com/eza-community/eza"
-arch=(x86_64)
-license=(MIT)
-depends=(gcc-libs glibc libgit2)
-makedepends=(rust)
-source=("$url/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('f8f42ed466c02eaaa2b157ef976d29f1c38a6ff13064be52baed70e4943f2481')
-b2sums=('c27852afc92454d684390f737f1b70c7bb4b2a6c50ae68fd61ae99d7a1af2b8c14ea9ebfec129f3861a1a8bd5d569467b72416a4d4dc6ceabbc8353396523d62')
+pkgdesc='A modern replacement for ls'
+arch=('x86_64')
+url='https://github.com/eza-community/eza'
+license=('MIT')
+depends=('gcc-libs' 'glibc' 'libgit2')
+makedepends=('rust')
+source=("${url}/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
+sha256sums=('437ea76838fea2464b9592f1adef7df0412e27c9fc2a3e7ff47efcdfb17457f5')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
@@ -31,4 +30,3 @@ package() {
   install -Dm644 "completions/fish/${pkgname}.fish" -t "${pkgdir}/usr/share/fish/vendor_completions.d"
   install -Dm644 LICENCE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
-
