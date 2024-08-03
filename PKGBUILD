@@ -1,5 +1,5 @@
 pkgname=eza
-pkgver=0.18.22
+pkgver=0.18.24
 pkgrel=1
 pkgdesc='A modern replacement for ls'
 arch=('x86_64')
@@ -30,3 +30,4 @@ package() {
   install -Dm644 "completions/fish/${pkgname}.fish" -t "${pkgdir}/usr/share/fish/vendor_completions.d"
   install -Dm644 LICENCE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
+sha256sums=('bdcf83f73f6d5088f6dc17c119d0d288fed4acd122466404772be5ef278887de')
