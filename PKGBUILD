@@ -1,5 +1,5 @@
 pkgname=eza
-pkgver=0.19.0
+pkgver=0.19.1
 pkgrel=1
 pkgdesc='A modern replacement for ls'
 arch=('x86_64')
@@ -8,7 +8,7 @@ license=('MIT')
 depends=('gcc-libs' 'glibc' 'libgit2')
 makedepends=('rust')
 source=("${url}/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('552fe9997ed4fc6e11dafebffc2aa249ab3fb465a05c614181c7b62e8a0df698')
+sha256sums=('a256ecdb9996933300bb54e19a68df61e27385e5df20ba1f780f2e454a7f8e8a')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
@@ -30,4 +30,3 @@ package() {
   install -Dm644 "completions/fish/${pkgname}.fish" -t "${pkgdir}/usr/share/fish/vendor_completions.d"
   install -Dm644 LICENCE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
-sha256sums=('440fff093c23635d7c1a9955d42489a2f5c5839a0e85a03e39daeca39e9dbf84')
