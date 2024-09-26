@@ -1,14 +1,14 @@
 pkgname=eza
-pkgver=0.19.4
+pkgver=0.20.0
 pkgrel=1
 pkgdesc='A modern replacement for ls'
 arch=('x86_64')
 url='https://github.com/eza-community/eza'
-license=('MIT')
+license=('EUPL-1.2')
 depends=('gcc-libs' 'glibc' 'libgit2')
 makedepends=('rust')
 source=("${url}/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('c0094b3ee230702d4dd983045e38ea2bd96375c16381c0206c88fae82fb551a4')
+sha256sums=('e6c058b13aecbed9f037c0607f0df19bc0a3532fea14dacd0090878ed4bbfadc')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
@@ -28,5 +28,5 @@ package() {
   install -Dm644 "completions/bash/${pkgname}" -t "${pkgdir}/usr/share/bash-completion/completions"
   install -Dm644 "completions/zsh/_${pkgname}" -t "${pkgdir}/usr/share/zsh/site-functions/"
   install -Dm644 "completions/fish/${pkgname}.fish" -t "${pkgdir}/usr/share/fish/vendor_completions.d"
-  install -Dm644 LICENCE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
