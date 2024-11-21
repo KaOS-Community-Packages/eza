@@ -1,5 +1,5 @@
 pkgname=eza
-pkgver=0.20.8
+pkgver=0.20.9
 pkgrel=1
 pkgdesc='A modern replacement for ls'
 arch=('x86_64')
@@ -8,7 +8,7 @@ license=('EUPL-1.2')
 depends=('gcc-libs' 'glibc' 'libgit2')
 makedepends=('rust')
 source=("${url}/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('10c32537e1c6d8dcd55d60e223dfb127dbec4c969132aeb503b2548213ef8541')
+sha256sums=('3f55cab4625bbd0af01bd4049330217b392fe915b0e5764f4131c9118d4f92d7')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
