@@ -1,5 +1,5 @@
 pkgname=eza
-pkgver=0.23.1
+pkgver=0.23.2
 pkgrel=1
 pkgdesc='A modern replacement for ls'
 arch=('x86_64')
@@ -8,25 +8,25 @@ license=('EUPL-1.2')
 depends=('gcc-libs' 'glibc' 'libgit2')
 makedepends=('rust')
 source=("${url}/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('4c49f3ee6fc76ef45c489cd664eb2c68d96cda31b427605a48b074bcf269ee05')
+sha256sums=('88a77b47c182ee22b3e13353d92d4b78e15072e05f377c8b8629f5697df15d87')
 
 prepare() {
-  cd "${pkgname}-${pkgver}"
-  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+    cd "${pkgname}-${pkgver}"
+    cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
-  cd "${pkgname}-${pkgver}"
-  CFLAGS+=' -ffat-lto-objects'
-  cargo build --frozen --release
+    cd "${pkgname}-${pkgver}"
+    CFLAGS+=' -ffat-lto-objects'
+    cargo build --frozen --release
 }
 
 package() {
-  cd "${pkgname}-${pkgver}"
-  install -Dm755 "target/release/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
-  ln -s eza "${pkgdir}/usr/bin/exa"
-  install -Dm644 "completions/bash/${pkgname}" -t "${pkgdir}/usr/share/bash-completion/completions"
-  install -Dm644 "completions/zsh/_${pkgname}" -t "${pkgdir}/usr/share/zsh/site-functions/"
-  install -Dm644 "completions/fish/${pkgname}.fish" -t "${pkgdir}/usr/share/fish/vendor_completions.d"
-  install -Dm644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    cd "${pkgname}-${pkgver}"
+    install -Dm755 "target/release/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+    ln -s eza "${pkgdir}/usr/bin/exa"
+    install -Dm644 "completions/bash/${pkgname}" -t "${pkgdir}/usr/share/bash-completion/completions"
+    install -Dm644 "completions/zsh/_${pkgname}" -t "${pkgdir}/usr/share/zsh/site-functions/"
+    install -Dm644 "completions/fish/${pkgname}.fish" -t "${pkgdir}/usr/share/fish/vendor_completions.d"
+    install -Dm644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
